@@ -1,0 +1,10 @@
+*.iml
+*.log
+*.sublime-*
+*.yml
+*.zip
+.DS_Store
+.idea
+/dev
+/node_modules
+package-lock.json

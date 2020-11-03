@@ -1,0 +1,41 @@
+{
+  "name": "@technik-sde/ksend",
+  "version": "1.0.0",
+  "description": "JSend developed a bit further",
+  "main": "dist/ksend.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "lint": "eslint index.ts",
+    "build": "webpack",
+    "dist": "NODE_ENV=production webpack",
+    "test": "mocha -r ts-node/register test/**/*.test.ts"
+  },
+  "keywords": [
+    "JSend",
+    "KSend",
+    "response format"
+  ],
+  "author": "Sueddeutsche Zeitung Digitale Medien GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sueddeutsche/ksend/issues"
+  },
+  "homepage": "https://github.com/sueddeutsche/ksend#readme",
+  "devDependencies": {
+    "@types/mocha": "8.0.3",
+    "@types/node": "14.14.6",
+    "@typescript-eslint/eslint-plugin": "2.21.0",
+    "@typescript-eslint/parser": "2.21.0",
+    "eslint": "6.8.0",
+    "eslint-plugin-array-func": "3.1.4",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-optimize-regex": "1.1.7",
+    "eslint-plugin-promise": "4.2.1",
+    "mocha": "8.2.1",
+    "terser-webpack-plugin": "5.0.3",
+    "ts-loader": "8.0.7",
+    "typescript": "4.0.5",
+    "webpack": "5.3.2",
+    "webpack-cli": "4.1.0"
+  }
+}
