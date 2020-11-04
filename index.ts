@@ -87,7 +87,7 @@ export const error = <T = any>(message: string, code: string, data?: T): KSendEr
 /**
  * Constructs response-data for a successful response of multiple items
  */
-export const list = <T>(items: Array<T>, totalCount?: number, isTotalCountAccurate = true): KSendList<T> => ({
+export const list = <T = any>(items: Array<T>, totalCount?: number, isTotalCountAccurate = true): KSendList<T> => ({
     currentCount: items.length,
     totalCount: totalCount || items.length,
     isTotalCountAccurate,
