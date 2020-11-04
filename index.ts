@@ -1,3 +1,6 @@
+/**
+ * KSend response
+ */
 export type KSend<T = any> = KSendSuccess<T> | KSendFail<T> | KSendError<T>;
 
 /**
@@ -38,17 +41,32 @@ export interface KSendList<T> {
     items: Array<T>;
 }
 
+/**
+ * Returns true, if the response is a success
+ */
 export const isKSendSuccess = (response: KSend): response is KSendSuccess => response?.status === "success";
 
+/**
+ * Returns true, if the response is a fail
+ */
 export const isKSendFail = (response: KSend): response is KSendFail => response?.status === "fail";
 
+/**
+ * Returns true, if the response is an error
+ */
 export const isKSendError = (response: KSend): response is KSendError => response?.status === "error";
 
+/**
+ * Constructs a success-response
+ */
 export const success = <T = any>(data?: T): KSendSuccess<T> => ({
     status: "success",
     data
 });
 
+/**
+ * Constructs a fail-response
+ */
 export const fail = <T = any>(message: string, code: string, data?: T): KSendFail<T> => ({
     status: "fail",
     message,
@@ -56,6 +74,9 @@ export const fail = <T = any>(message: string, code: string, data?: T): KSendFai
     ...data != null && { data }
 });
 
+/**
+ * Constructs an error-response
+ */
 export const error = <T = any>(message: string, code: string, data?: T): KSendError<T> => ({
     status: "error",
     message,
@@ -63,6 +84,9 @@ export const error = <T = any>(message: string, code: string, data?: T): KSendEr
     ...data != null && { data }
 });
 
+/**
+ * Constructs response-data for a successful response of multiple items
+ */
 export const list = <T>(items: Array<T>, totalCount?: number, isTotalCountAccurate = true): KSendList<T> => ({
     currentCount: items.length,
     totalCount: totalCount || items.length,
