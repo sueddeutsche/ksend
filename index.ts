@@ -1,8 +1,16 @@
+export type KSend<T = any> = KSendSuccess<T> | KSendFail<T> | KSendError<T>;
+
+/**
+ * All went well, and (usually) some data was returned.
+ */
 export interface KSendSuccess<T = any> {
     status: "success";
     data?: T;
 }
 
+/**
+ * There was a problem with the data submitted, or some pre-condition of the API call wasn't satisfied
+ */
 export interface KSendFail<T = any> {
     status: "fail";
     message: string;
@@ -10,6 +18,9 @@ export interface KSendFail<T = any> {
     data?: T;
 }
 
+/**
+ * An error occurred in processing the request, i.e. an exception was thrown
+ */
 export interface KSendError<T = any> {
     status: "error";
     message: string;
@@ -17,6 +28,9 @@ export interface KSendError<T = any> {
     data?: T;
 }
 
+/**
+ * Success data of a list of entities
+ */
 export interface KSendList<T> {
     currentCount: number;
     totalCount: number;
@@ -24,7 +38,13 @@ export interface KSendList<T> {
     items: Array<T>;
 }
 
-export const success = <T>(data?: T): KSendSuccess<T> => ({
+export const isKSendSuccess = (response: KSend): response is KSendSuccess => response?.status === "success";
+
+export const isKSendFail = (response: KSend): response is KSendFail => response?.status === "fail";
+
+export const isKSendError = (response: KSend): response is KSendError => response?.status === "error";
+
+export const success = <T = any>(data?: T): KSendSuccess<T> => ({
     status: "success",
     data
 });
