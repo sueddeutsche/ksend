@@ -1,6 +1,6 @@
 {
   "name": "@technik-sde/ksend",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "JSend developed a bit further",
   "main": "dist/ksend.js",
   "types": "dist/index.d.ts",
